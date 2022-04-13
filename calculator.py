@@ -1,3 +1,35 @@
+def multiply(x):
+    p = x.index("*")
+    r = x[p-1] * x[p+1]
+    
+    del x[p+1]
+    x[p] = r
+    del x[p-1]
+
+def division(x):
+    p = x.index("/")
+    r = x[p-1] / x[p+1]
+
+    del x[p+1]
+    x[p] = r
+    del x[p-1]
+
+def adition(x):
+    p = x.index("+")
+    r = x[p-1] + x[p+1]
+
+    del x[p+1]
+    x[p] = r
+    del x[p-1]
+
+def substraction(x):
+    p = x.index("-")
+    r = x[p-1] - x[p+1]
+
+    del x[p+1]
+    x[p] = r
+    del x[p-1]
+
 
 while True:
     expresion = input(">> ")
@@ -15,21 +47,18 @@ while True:
                 operandos.append(int(i))
             except:
                 operandos.append(i)
-    
-        if "*" in operandos:
-            l = operandos.index("*")
-            resultado = operandos[l-1] * operandos[l+1]
-            print(resultado)
-        elif "+" in operandos:
-            l = operandos.index("+")
-            resultado = operandos[l-1] + operandos[l+1]
-            print(resultado)
+            
+        while True:
+            
+            if   "/" in operandos: division(operandos)
+            elif "*" in operandos: multiply(operandos) 
+            elif "-" in operandos: substraction(operandos)
+            elif "+" in operandos: adition(operandos)
+            else:
+                break
 
-        if "/" in operandos:
-            l = operandos.index("/")
-            resultado = operandos[l-1] / operandos[l+1]
-            print(resultado)
-        elif "-" in operandos:
-            l = operandos.index("-")
-            resultado = operandos[l-1] - operandos[l+1]
-            print(resultado)
+
+        print(operandos[0])
+        
+        
+        
